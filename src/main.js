@@ -1,8 +1,13 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue";
+import Vuetify from "vuetify";
+import App from "./App.vue";
 
-Vue.config.productionTip = false
-
+Vue.config.productionTip = false;
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  vuetify: new Vuetify(),
+  data: () => ({
+    model: 0,
+    colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
+  }),
+  render: (h) => h(App),
+}).$mount("#app");
