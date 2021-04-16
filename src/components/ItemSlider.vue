@@ -1,14 +1,14 @@
 <template>
   <div>
     <v-app id="inspire">
-      <v-carousel v-model="model">
-        <v-carousel-item v-for="(color, i) in colors" :key="color">
-          <v-sheet :color="color" height="100%" tile>
-            <v-row class="fill-height" align="center" justify="center">
-              <div class="display-3">Slide {{ i + 1 }}</div>
-            </v-row>
-          </v-sheet>
-        </v-carousel-item>
+      <v-carousel>
+        <v-carousel-item
+          v-for="(item, i) in items"
+          :key="i"
+          :src="item.src"
+          reverse-transition="fade"
+          transition="fade"
+        ></v-carousel-item>
       </v-carousel>
     </v-app>
   </div>
@@ -16,12 +16,32 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "ItemSlider",
   props: {
-    msg: String,
+    items: {
+      type: Array,
+    },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style style lang="scss" scoped>
+#example-custom-transition {
+  .fade {
+    &-enter-active,
+    &-leave-active,
+    &-leave-to {
+      transition: 0.3s ease-out;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    &-enter,
+    &-leave,
+    &-leave-to {
+      opacity: 0;
+    }
+  }
+}
+</style>
