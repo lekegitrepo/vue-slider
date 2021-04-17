@@ -17,18 +17,10 @@ export default {
   data() {
     return {
       items: [
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
-        },
+        "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+        "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+        "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+        "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
       ],
     };
   },

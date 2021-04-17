@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <v-app id="inspire">
-      <v-carousel :cycle="true">
-        <v-carousel-item
-          v-for="(item, i) in items"
-          :key="i"
-          :src="item.src"
-          reverse-transition="fade-transition"
-          transition="fade-transition"
-        ></v-carousel-item>
-      </v-carousel>
-    </v-app>
-  </div>
+  <simple-carousel-container loop :watch-it="items">
+    <simple-carousel-item v-for="(photo, index) in items" :key="index">
+      <img :src="photo" />
+    </simple-carousel-item>
+  </simple-carousel-container>
 </template>
 
 <script>
+import {
+  SimpleCarouselContainer,
+  SimpleCarouselItem,
+} from "vue-simple-carousel";
 export default {
   name: "ItemSlider",
+  components: {
+    SimpleCarouselContainer,
+    SimpleCarouselItem,
+  },
   props: {
     items: {
       type: Array,
