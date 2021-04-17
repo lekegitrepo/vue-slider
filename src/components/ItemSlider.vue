@@ -1,47 +1,76 @@
 <template>
-  <simple-carousel-container loop :watch-it="items">
-    <simple-carousel-item v-for="(photo, index) in items" :key="index">
-      <img :src="photo" />
-    </simple-carousel-item>
-  </simple-carousel-container>
+  <div>
+    <flickity ref="flickity" :options="flickityOptions">
+      <div class="carousel-cell" v-for="(i, index) in items" :key="index">
+        <img :src="i" />
+      </div>
+    </flickity>
+  </div>
 </template>
 
 <script>
-import {
-  SimpleCarouselContainer,
-  SimpleCarouselItem,
-} from "vue-simple-carousel";
+import Flickity from "vue-flickity";
 export default {
   name: "ItemSlider",
   components: {
-    SimpleCarouselContainer,
-    SimpleCarouselItem,
+    Flickity,
   },
   props: {
     items: {
       type: Array,
     },
   },
+  methods: {
+    next() {
+      this.$refs.flickity.next();
+    },
+
+    previous() {
+      this.$refs.flickity.previous();
+    },
+  },
+  data() {
+    return {
+      flickityOptions: {
+        pageDots: true,
+        wrapAround: true,
+        autoPlay: true,
+      },
+    };
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style style lang="scss" scoped>
-#example-custom-transition {
-  .fade {
-    &-enter-active,
-    &-leave-active,
-    &-leave-to {
-      transition: 0.3s ease-out;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-    &-enter,
-    &-leave,
-    &-leave-to {
-      opacity: 0;
-    }
-  }
+<style style lang="scss">
+* {
+  box-sizing: border-box;
 }
+
+body {
+  font-family: sans-serif;
+}
+
+.carousel {
+  background: #eee;
+}
+
+.carousel-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8c8;
+  border-radius: 5px;
+  counter-increment: gallery-cell;
+}
+
+/* cell number */
+// .carousel-cell:before {
+//   display: block;
+//   text-align: center;
+//   content: counter(gallery-cell);
+//   line-height: 200px;
+//   font-size: 80px;
+//   color: white;
+// }
 </style>
