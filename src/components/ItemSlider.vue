@@ -1,14 +1,22 @@
 <template>
-  <div class="carousel-wrapper">
-    <div>
+  <div class="carousel-wrapper flex">
+    <slider animation="fade" :indicators="false">
+      <slider-item v-for="(i, index) in items" :key="index">
+        <img :src="i" />
+        <p>This is p tag</p>
+        <button>BUTTON</button>
+      </slider-item>
+      <div slot="loading">custom loading ...</div>
+    </slider>
+    <!-- <div>
       <VueSlickCarousel v-bind="settings" class="carousel">
-        <!-- <div class="div-1">1</div>
+        <div class="div-1">1</div>
         <div class="div-2">2</div>
         <div class="div-3">3</div>
-        <div class="div-4">4</div> -->
-        <!-- <div v-for="(item, index) in items" :key="index" class="img-wrapper">
+        <div class="div-4">4</div>
+        <div v-for="(item, index) in items" :key="index" class="img-wrapper">
           <img :src="item" />
-        </div> -->
+        </div>
         <div v-for="(item, index) in items" :key="index">
           <div class="row">
             <h3><img :src="item" /></h3>
@@ -26,19 +34,19 @@
         </template>
         /*...*/
       </VueSlickCarousel>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import VueSlickCarousel from "vue-slick-carousel";
-import "vue-slick-carousel/dist/vue-slick-carousel.css";
+//import VueSlickCarousel from "vue-slick-carousel";
+//import "vue-slick-carousel/dist/vue-slick-carousel.css";
 // optional style for arrows & dots
-import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+//import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 export default {
   name: "ItemSlider",
   components: {
-    VueSlickCarousel,
+    //VueSlickCarousel,
   },
   props: {
     items: {
@@ -63,10 +71,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style style lang="scss" scoped>
-/* .carousel-wrapper {
+.carousel-wrapper {
   width: 400px;
 }
-.custom-arrow {
+/* .custom-arrow {
   background-color: black;
   color: red;
 }
