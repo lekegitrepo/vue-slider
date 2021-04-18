@@ -1,40 +1,60 @@
 <template>
-  <div>
-    <flickity ref="flickity" :options="flickityOptions">
-      <div class="carousel-cell" v-for="(i, index) in items" :key="index">
-        <img :src="i" />
-      </div>
-    </flickity>
+  <div class="carousel-wrapper">
+    <div>
+      <VueSlickCarousel v-bind="settings" class="carousel">
+        <!-- <div class="div-1">1</div>
+        <div class="div-2">2</div>
+        <div class="div-3">3</div>
+        <div class="div-4">4</div> -->
+        <!-- <div v-for="(item, index) in items" :key="index" class="img-wrapper">
+          <img :src="item" />
+        </div> -->
+        <div v-for="(item, index) in items" :key="index">
+          <div class="row">
+            <h3><img :src="item" /></h3>
+          </div>
+        </div>
+        <template #prevArrow="arrowOption">
+          <div class="custom-arrow">
+            {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
+          </div>
+        </template>
+        <template #nextArrow="arrowOption">
+          <div class="custom-arrow">
+            {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
+          </div>
+        </template>
+        /*...*/
+      </VueSlickCarousel>
+    </div>
   </div>
 </template>
 
 <script>
-import Flickity from "vue-flickity";
+import VueSlickCarousel from "vue-slick-carousel";
+import "vue-slick-carousel/dist/vue-slick-carousel.css";
+// optional style for arrows & dots
+import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 export default {
   name: "ItemSlider",
   components: {
-    Flickity,
+    VueSlickCarousel,
   },
   props: {
     items: {
       type: Array,
     },
   },
-  methods: {
-    next() {
-      this.$refs.flickity.next();
-    },
-
-    previous() {
-      this.$refs.flickity.previous();
-    },
-  },
   data() {
     return {
-      flickityOptions: {
-        pageDots: true,
-        wrapAround: true,
-        autoPlay: true,
+      settings: {
+        dots: true,
+        autoplay: true,
+        swipeToSlide: true,
+        dotsClass: "slick-dots custom-dot-class",
+        edgeFriction: 0.35,
+        infinite: true,
+        speed: 500,
       },
     };
   },
@@ -42,35 +62,57 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style style lang="scss">
-* {
-  box-sizing: border-box;
+<style style lang="scss" scoped>
+/* .carousel-wrapper {
+  width: 400px;
 }
-
-body {
-  font-family: sans-serif;
+.custom-arrow {
+  background-color: black;
+  color: red;
 }
-
-.carousel {
-  background: #eee;
+.slick-prev {
+  left: -15px;
+  z-index: 10;
 }
-
-.carousel-cell {
-  width: 66%;
-  height: 200px;
-  margin-right: 10px;
-  background: #8c8;
-  border-radius: 5px;
-  counter-increment: gallery-cell;
+.slick-next {
+  right: -12px;
 }
-
-/* cell number */
-// .carousel-cell:before {
-//   display: block;
-//   text-align: center;
-//   content: counter(gallery-cell);
-//   line-height: 200px;
-//   font-size: 80px;
-//   color: white;
-// }
+.slick-dots .custom-dot-class {
+  bottom: 20px;
+}
+.slick-dots {
+  position: absolute;
+  bottom: -25px;
+  display: block;
+  width: 100%;
+  padding: 200px;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+} */
+/* .div-0 {
+  height: 400px;
+  width: 600px;
+  background-color: rgb(62, 109, 236);
+}
+.div-1 {
+  height: 400px;
+  width: 600px;
+  background-color: rgb(93, 180, 173);
+}
+.div-2 {
+  height: 400px;
+  width: 600px;
+  background-color: rgb(128, 153, 60);
+}
+.div-3 {
+  height: 400px;
+  width: 600px;
+  background-color: rgb(73, 84, 230);
+}
+.div-4 {
+  height: 400px;
+  width: 600px;
+  background-color: rgb(236, 92, 128);
+} */
 </style>

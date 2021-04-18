@@ -17,10 +17,11 @@ export default {
   data() {
     return {
       items: [
-        "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
-        "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
-        "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
-        "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+        "https://www.linkpicture.com/q/Image-5.png",
+        "https://www.linkpicture.com/q/Image-4.png",
+        "https://www.linkpicture.com/q/Image-3_2.png",
+        "https://www.linkpicture.com/q/Image-2_1.png",
+        "https://www.linkpicture.com/q/Image-1_1.png",
       ],
     };
   },
