@@ -12,6 +12,7 @@
     "hooper": "^0.3.4",
     "swiper": "^6.5.7",
     "vue": "^2.6.11",
+    "vue-awesome-swiper": "^4.1.1",
     "vue-carousel-3d": "^1.0.1",
     "vue-easy-slider": "^5.3.4",
     "vue-flickity": "^1.2.1",
