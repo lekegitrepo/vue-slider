@@ -1,10 +1,12 @@
 <template>
   <dir>
     <item-slider :items="items" />
+    <hooper-slider :items="items" />
   </dir>
 </template>
 
 <script>
+import HooperSlider from "./components/hooper-slider.vue";
 import ItemSlider from "./components/ItemSlider.vue";
 
 export default {
@@ -12,6 +14,7 @@ export default {
 
   components: {
     ItemSlider,
+    HooperSlider,
   },
 
   data() {
