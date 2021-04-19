@@ -32,8 +32,9 @@
   margin: 0;
   padding: 0;
 }
-.hooper-indicator:hover,
-.hooper-indicator.is-active {
+
+button.hooper-indicator:hover,
+button.hooper-indicator.is-active {
   background-color: #b44646;
 }
 .hooper-indicator li button {

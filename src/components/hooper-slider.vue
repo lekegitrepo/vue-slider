@@ -1,32 +1,30 @@
 <template>
   <div class="carousel-wrapper">
-    <!-- <button @click.prevent="slidePrev" class="prev" :class="{ display: hover }">
+    <button @click.prevent="slidePrev" class="prev">
       prev
-    </button> -->
+    </button>
 
     <hooper
       ref="carousel"
       @slide="updateCarousel"
       :settings="settings"
-      @mouseover="hover = true"
-      @mouseleave="hover = false"
       :transition="3000"
     >
       <slide v-for="(i, index) in items" :key="index" :index="index">
         <img :src="i" />
       </slide>
-      <hooper-navigation
+      <!-- <hooper-navigation
         slot="hooper-addons"
         class="hooper-nav"
-      ></hooper-navigation>
+      ></hooper-navigation> -->
       <hooper-pagination
         slot="hooper-addons"
         class="hooper-indicator"
       ></hooper-pagination>
     </hooper>
-    <!-- <button @click.prevent="slideNext" class="next" :class="{ display: hover }">
+    <button @click.prevent="slideNext" class="next">
       next
-    </button> -->
+    </button>
   </div>
 </template>
 
@@ -35,7 +33,7 @@ import {
   Hooper,
   Slide,
   Pagination as HooperPagination,
-  Navigation as HooperNavigation,
+  // Navigation as HooperNavigation,
 } from "hooper";
 //import "hooper/dist/hooper.css";
 import "../assets/hooper.css";
@@ -44,7 +42,7 @@ export default {
   components: {
     Hooper,
     Slide,
-    HooperNavigation,
+    //HooperNavigation,
     HooperPagination,
   },
   props: {
@@ -85,5 +83,13 @@ export default {
 .carousel-wrapper {
   position: relative;
   width: 400px;
+}
+button {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+}
+.next {
+  right: 0;
 }
 </style>
