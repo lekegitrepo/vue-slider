@@ -11,7 +11,7 @@
       />
     </div>
     <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
+    <div @click="setPagination" class="swiper-pagination"></div>
 
     <!-- If we need navigation buttons -->
     <button @click="prev" class="swiper-button-prev"></button>
@@ -33,11 +33,17 @@ export default {
     return {
       slider: null,
       mySliderOptions: {
-        autoplay: true,
-        loop: true,
-        speed: 400,
-        spaceBetween: 30,
+        autoHeight: true,
+        centeredSlidesBounds: true,
+        disableOnInteraction: true,
         effect: "fade",
+        loop: true,
+        slideToClickedSlide: true,
+        speed: 1000,
+        spaceBetween: 30,
+        autoplay: {
+          delay: 5000,
+        },
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
@@ -48,13 +54,33 @@ export default {
   methods: {
     prev() {
       this.slider.slidePrev();
+      console.log("This is swiper for the prev", this.slider.autoplay.running);
+      if (!this.slider.autoplay.running) this.slider.autoplay.start();
     },
     next() {
       this.slider.slideNext();
+      console.log("This is swiper for the next", this.slider.autoplay.running);
+      if (!this.slider.autoplay.running) this.slider.autoplay.start();
+    },
+    setPagination() {
+      console.log(
+        "This is swiper for pagination",
+        this.slider.autoplay.running
+      );
+      if (this.slider.autoplay.running) this.slider.autoplay.stop();
+      console.log(
+        "This is swiper for pagination after stop",
+        this.slider.autoplay.running
+      );
+      this.slider.autoplay.start();
+      console.log(
+        "This is swiper for pagination after start",
+        this.slider.autoplay.running
+      );
     },
   },
   mounted() {
-    this.slider = new Swiper(this.$refs.mySlider, this.mySliderOptions);
+    this.slider = new Swiper(".swiper-container", this.mySliderOptions);
   },
 };
 </script>
@@ -76,6 +102,7 @@ body {
 }
 
 .swiper-container {
+  overflow: visible;
   width: 400px;
 }
 
@@ -97,7 +124,7 @@ body {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  border: solid 2px rgb(170, 53, 53);
+  border: none;
   height: auto;
 }
 .swiper-button-prev,

@@ -196,7 +196,7 @@
 }
 .swiper-button-prev,
 .swiper-container-rtl .swiper-button-next {
-  left: 10px;
+  left: -25px;
   right: auto;
 }
 .swiper-button-prev:after,
@@ -205,7 +205,7 @@
 }
 .swiper-button-next,
 .swiper-container-rtl .swiper-button-prev {
-  right: 10px;
+  right: -25px;
   left: auto;
 }
 .swiper-button-next:after,
