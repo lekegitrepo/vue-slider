@@ -1,13 +1,15 @@
 <template>
-  <dir>
+  <div>
     <item-slider :items="items" />
     <hooper-slider :items="items" />
-  </dir>
+    <swiper-slider :items="items" />
+  </div>
 </template>
 
 <script>
 import HooperSlider from "./components/hooper-slider.vue";
 import ItemSlider from "./components/ItemSlider.vue";
+import SwiperSlider from "./components/swiper-item-slider.vue";
 
 export default {
   name: "App",
@@ -15,6 +17,7 @@ export default {
   components: {
     ItemSlider,
     HooperSlider,
+    SwiperSlider,
   },
 
   data() {
