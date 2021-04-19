@@ -11,7 +11,7 @@
       />
     </div>
     <!-- If we need pagination -->
-    <div @click="setPagination" class="swiper-pagination"></div>
+    <div class="swiper-pagination"></div>
 
     <!-- If we need navigation buttons -->
     <button @click="prev" class="swiper-button-prev"></button>
@@ -35,7 +35,6 @@ export default {
       mySliderOptions: {
         autoHeight: true,
         centeredSlidesBounds: true,
-        disableOnInteraction: true,
         effect: "fade",
         loop: true,
         slideToClickedSlide: true,
@@ -43,6 +42,7 @@ export default {
         spaceBetween: 30,
         autoplay: {
           delay: 5000,
+          disableOnInteraction: false,
         },
         pagination: {
           el: ".swiper-pagination",
@@ -54,29 +54,9 @@ export default {
   methods: {
     prev() {
       this.slider.slidePrev();
-      console.log("This is swiper for the prev", this.slider.autoplay.running);
-      if (!this.slider.autoplay.running) this.slider.autoplay.start();
     },
     next() {
       this.slider.slideNext();
-      console.log("This is swiper for the next", this.slider.autoplay.running);
-      if (!this.slider.autoplay.running) this.slider.autoplay.start();
-    },
-    setPagination() {
-      console.log(
-        "This is swiper for pagination",
-        this.slider.autoplay.running
-      );
-      if (this.slider.autoplay.running) this.slider.autoplay.stop();
-      console.log(
-        "This is swiper for pagination after stop",
-        this.slider.autoplay.running
-      );
-      this.slider.autoplay.start();
-      console.log(
-        "This is swiper for pagination after start",
-        this.slider.autoplay.running
-      );
     },
   },
   mounted() {
