@@ -21,9 +21,8 @@
   </div>
 </template>
 <script>
-import Swiper from "swiper";
-import "swiper/swiper-bundle.css";
-
+import Swiper from "swiper/swiper-bundle.min.js";
+import "../assets/swiper.css";
 export default {
   props: {
     items: {
@@ -34,6 +33,7 @@ export default {
     return {
       slider: null,
       mySliderOptions: {
+        autoplay: true,
         loop: true,
         speed: 400,
         spaceBetween: 30,
@@ -41,9 +41,6 @@ export default {
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
-          renderBullet: function(index) {
-            return `<span class="dot swiper-pagination-bullet">${index}</span>`;
-          },
         },
       },
     };
@@ -103,10 +100,12 @@ body {
   border: solid 2px rgb(170, 53, 53);
   height: auto;
 }
-
-/* .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  } */
+.swiper-button-prev,
+.swiper-button-next {
+  border: none;
+  border-radius: 10px;
+  height: 20px;
+  text-align: center;
+  width: 20px;
+}
 </style>
