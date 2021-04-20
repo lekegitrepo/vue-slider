@@ -22,7 +22,11 @@
 </template>
 <script>
 import Swiper from "swiper/swiper-bundle.min.js";
-import "../assets/swiper.css";
+import SwiperCore, { Navigation, Pagination } from "swiper/core";
+// configure Swiper to use modules
+SwiperCore.use([Navigation, Pagination]);
+import "swiper/swiper-bundle.css";
+import "@/assets/swiper.css";
 export default {
   props: {
     items: {
