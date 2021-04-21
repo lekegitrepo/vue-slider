@@ -1,32 +1,38 @@
 <template>
-  <!-- Slider main container -->
-  <div ref="mySlider" class="swiper-container">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
-      <img
-        class="swiper-slide"
-        v-for="(i, index) in items"
-        :key="index"
-        :src="i"
-      />
-    </div>
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
+  <div class="container">
+    <!-- Slider main container -->
+    <div ref="mySlider" class="swiper-container">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <img
+          class="swiper-slide"
+          v-for="(i, index) in items"
+          :key="index"
+          :src="i"
+        />
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
 
-    <!-- If we need navigation buttons -->
-    <button @click="prev" class="swiper-button-prev"></button>
-    <button @click="next" class="swiper-button-next"></button>
-    <!-- If we need scrollbar -->
-    <!-- <div class="swiper-scrollbar"></div> -->
+      <!-- If we need navigation buttons -->
+      <button @click="prev" class="swiper-button-prev"></button>
+      <button @click="next" class="swiper-button-next"></button>
+      <!-- If we need scrollbar -->
+      <!-- <div class="swiper-scrollbar"></div> -->
+    </div>
   </div>
 </template>
 <script>
-import Swiper from "swiper/swiper-bundle.min.js";
-import SwiperCore, { Navigation, Pagination } from "swiper/core";
+import SwiperCore, {
+  Autoplay,
+  Navigation,
+  Pagination,
+  EffectFade,
+} from "swiper/core";
 // configure Swiper to use modules
-SwiperCore.use([Navigation, Pagination]);
-import "swiper/swiper-bundle.css";
-import "@/assets/swiper.css";
+SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade]);
+import "swiper/swiper-bundle.min.css";
+// import "@/assets/swiper.css";
 export default {
   props: {
     items: {
@@ -64,29 +70,13 @@ export default {
     },
   },
   mounted() {
-    this.slider = new Swiper(".swiper-container", this.mySliderOptions);
+    this.slider = new SwiperCore(".swiper-container", this.mySliderOptions);
   },
 };
 </script>
 
 <style scoped>
-html,
-body {
-  position: relative;
-  height: 100%;
-}
-
-body {
-  background: #eee;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-  margin: 0;
-  padding: 0;
-}
-
-.swiper-container {
-  overflow: visible;
+.container {
   width: 400px;
 }
 
@@ -115,8 +105,13 @@ body {
 .swiper-button-next {
   border: none;
   border-radius: 10px;
+  color: black;
   height: 20px;
   text-align: center;
   width: 20px;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 10px;
 }
 </style>
